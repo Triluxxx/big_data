@@ -9,7 +9,11 @@
 
 ## 📋 1. RESUMEN EJECUTIVO
 
-Este caso de estudio demuestra un pipeline completo de Big Data aplicado al análisis de **66,914 accidentes fatales** registrados en EE.UU. (2015-2016) por la NHTSA (FARS). Se identificaron los factores que más incrementan el número de víctimas mortales usando un clúster Hadoop de 4 nodos, Apache Spark para machine learning, y Streamlit para visualización ejecutiva.
+### Rol Asumido
+
+**Científico de Datos / Ingeniero de Big Data** en una consultora de seguridad vial contratada por una aseguradora nacional. El objetivo es identificar los factores que más incrementan la letalidad en accidentes de tráfico para fundamentar políticas de prevención y ajustar primas de seguro basadas en datos.
+
+### Dataset
 
 ### Hallazgo Principal
 
@@ -211,16 +215,12 @@ echo '192.168.88.63' >> /home/debian/spark/conf/workers
 
 **Objetivo:** Identificar qué factores más incrementan el número de fatalidades.
 
+**Script:** `scripts/03_spark_ml.py`
+
 ```bash
 # Ejecutar análisis en el master
-export JAVA_HOME=/opt/hadoop/jdk
-export HADOOP_CONF_DIR=/opt/hadoop/etc/hadoop
-
 cd /home/debian
-/home/debian/spark/bin/spark-submit \
-  --master 'local[2]' \
-  --driver-memory 1g \
-  analisis_correlacion_v2.py
+python3 03_spark_ml.py
 ```
 
 **Técnicas aplicadas:**
@@ -238,14 +238,17 @@ cd /home/debian
 
 ---
 
-### 3.6 FASE 6: Dashboard Ejecutivo con Streamlit
+### 3.6 FASE 6: Dashboard Ejecutivo con Streamlit + Plotly
 
-**Objetivo:** Crear visualización interactiva de los hallazgos.
+**Objetivo:** Crear visualización interactiva de los hallazgos con gráficos Plotly.
+
+**Script:** `scripts/04_dashboard.py`
 
 ```bash
 # En Kali:
-cd "/home/kali/big data"
-streamlit run dashboard_fars_v2.py --server.port 8501
+python3 scripts/04_dashboard.py
+# O directamente:
+streamlit run dashboard_fars_v4.py --server.port 8501
 ```
 
 **Funcionalidades del Dashboard:**
@@ -260,12 +263,16 @@ streamlit run dashboard_fars_v2.py --server.port 8501
 
 ---
 
-### 3.7 FASE 7: Exposición Pública
+### 3.7 FASE 7: Pipeline Automatizado
+
+**Objetivo:** Ejecutar todas las fases con un solo comando.
 
 ```bash
-# Túnel público con localtunnel
-npx localtunnel --port 8501
-# URL generada: https://tired-tires-care.loca.lt
+# Ejecutar fases 1-3 (Ingesta + ETL + Spark ML)
+python3 scripts/pipeline_completo.py
+
+# Ejecutar fases 1-4 (incluye dashboard)
+python3 scripts/pipeline_completo.py --all
 ```
 
 ---
@@ -340,7 +347,12 @@ Las **17:00-21:00** concentran la mayor cantidad de accidentes fatales, coincidi
 | `fars-2015-accidents (1).csv` | Datos originales 2015 |
 | `fars-2016-accidents.csv` | Datos originales 2016 |
 | `analisis_correlacion_v2.py` | Script PySpark de análisis ML |
-| `dashboard_fars_v2.py` | Dashboard Streamlit ejecutivo |
+| `dashboard_fars_v4.py` | Dashboard Streamlit + Plotly (interactivo) |
+| `scripts/01_ingesta.py` | Script Fase 1 — Diagnóstico del clúster |
+| `scripts/02_etl.py` | Script Fase 2 — Transferencia y carga HDFS |
+| `scripts/03_spark_ml.py` | Script Fase 3 — Análisis ML con PySpark |
+| `scripts/04_dashboard.py` | Script Fase 4 — Iniciar dashboard |
+| `scripts/pipeline_completo.py` | Pipeline que ejecuta todas las fases |
 | `resultados_analisis.json` | Resultados del modelo (JSON) |
 | `informe_ejecutivo_fars.md` | Informe formal para empresa |
 | `procedimiento_hadoop_fars.md` | Documentación técnica completa |

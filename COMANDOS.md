@@ -187,17 +187,20 @@ sshpass -p 'debian' scp -o StrictHostKeyChecking=no \
 
 ---
 
-## 📊 FASE 6: Dashboard Streamlit
+## 📊 FASE 6: Dashboard Streamlit + Plotly
 
-> **Objetivo:** Crear dashboard ejecutivo interactivo con los hallazgos del análisis.
-> **Resultado:** Dashboard con 4 factores clave, gráficos, filtros, métricas.
+> **Objetivo:** Crear dashboard ejecutivo interactivo con gráficos Plotly.
+> **Resultado:** Dashboard con 4 factores clave, gráficos interactivos, mapa geo, filtros.
 
 ```bash
 # En Kali:
 cd "/home/kali/big data"
 
-# Ejecutar dashboard v2 (con resultados Spark)
-streamlit run dashboard_fars_v2.py --server.port 8501 --server.headless true
+# Opción A: Usando el script modular
+python3 scripts/04_dashboard.py
+
+# Opción B: Directamente
+streamlit run dashboard_fars_v4.py --server.port 8501 --server.headless true
 
 # URLs de acceso:
 # Local:    http://localhost:8501
@@ -226,7 +229,22 @@ cloudflared tunnel --url http://localhost:8501
 
 ---
 
-## 🧹 FASE 8: Comandos Útiles Adicionales
+## 🚀 FASE 8: Pipeline Completo (Automatizado)
+
+> **Objetivo:** Ejecutar todas las fases con un solo comando.
+> **Resultado:** Pipeline end-to-end: ingesta → ETL → Spark ML → Dashboard.
+
+```bash
+# Ejecutar fases 1-3 (Ingesta + ETL + Spark ML)
+python3 scripts/pipeline_completo.py
+
+# Ejecutar fases 1-4 (incluye dashboard)
+python3 scripts/pipeline_completo.py --all
+```
+
+---
+
+## 🧹 FASE 9: Comandos Útiles Adicionales
 
 ```bash
 # ===== HDFS =====

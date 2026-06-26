@@ -16,10 +16,18 @@
 
 | Archivo | Descripción |
 |---------|-------------|
-| `analisis_correlacion_v2.py` | Script PySpark — correlación Pearson + Random Forest Regressor |
-| `dashboard_fars_v2.py` | Dashboard Streamlit ejecutivo con hallazgos del análisis |
-| `dashboard_fars_master.py` | Versión del dashboard para ejecutar directo en el master |
+| `dashboard_fars_v4.py` | Dashboard Streamlit + Plotly (gráficos interactivos) |
 | `resultados_analisis.json` | Resultados del modelo en formato JSON |
+
+### 📂 Scripts Modulares (`scripts/`)
+
+| Script | Fase | Descripción |
+|--------|------|-------------|
+| `01_ingesta.py` | 1 | Diagnóstico de conectividad y estado del clúster |
+| `02_etl.py` | 2 | Transferencia de datos y carga a HDFS con particionado |
+| `03_spark_ml.py` | 3 | Análisis ML: Pearson + Random Forest Regressor |
+| `04_dashboard.py` | 4 | Iniciar dashboard Streamlit + Plotly |
+| `pipeline_completo.py` | Todas | Ejecuta fases 1-3 (o 1-4 con --all) |
 
 ### 📂 Datos
 
@@ -59,15 +67,13 @@ graph TB
 
 ## 🚀 Flujo de Trabajo (7 Fases)
 
-| Fase | Descripción | Documento |
-|------|-------------|-----------|
-| 1 | Descubrimiento y diagnóstico del clúster | [COMANDOS.md Fase 1](COMANDOS.md#-fase-1-conectividad-y-diagnóstico) |
-| 2 | Transferencia de datos Kali → Master | [COMANDOS.md Fase 2](COMANDOS.md#-fase-2-transferencia-de-datos-kali--master) |
-| 3 | Carga a HDFS con particionado | [COMANDOS.md Fase 3](COMANDOS.md#-fase-3-carga-a-hdfs) |
-| 4 | Instalación de Apache Spark 3.5.8 | [COMANDOS.md Fase 4](COMANDOS.md#-fase-4-instalación-de-apache-spark) |
-| 5 | Análisis ML con PySpark | [COMANDOS.md Fase 5](COMANDOS.md#-fase-5-análisis-de-correlación-con-pyspark) |
-| 6 | Dashboard ejecutivo con Streamlit | [COMANDOS.md Fase 6](COMANDOS.md#-fase-6-dashboard-streamlit) |
-| 7 | Exposición pública con localtunnel | [COMANDOS.md Fase 7](COMANDOS.md#-fase-7-exposición-pública-túnel) |
+| Fase | Descripción | Script |
+|------|-------------|--------|
+| 1 | Descubrimiento y diagnóstico del clúster | `scripts/01_ingesta.py` |
+| 2 | Transferencia de datos Kali → Master → HDFS | `scripts/02_etl.py` |
+| 3 | Análisis ML con PySpark (Pearson + Random Forest) | `scripts/03_spark_ml.py` |
+| 4 | Dashboard ejecutivo con Streamlit + Plotly | `scripts/04_dashboard.py` |
+| 🚀 | **Pipeline completo (todo automático)** | `scripts/pipeline_completo.py` |
 
 ---
 
@@ -92,8 +98,8 @@ graph TB
 | Procesamiento | Apache Spark | 3.5.8 |
 | ML | Spark MLlib (Random Forest) | 3.5.8 |
 | Lenguaje | Python (PySpark) | 3.13 |
-| Visualización | Streamlit | 1.58 |
-| Gráficos | Matplotlib | 3.11 |
+| Visualización | Streamlit + **Plotly** | 1.58 |
+| Gráficos | Plotly (interactivos) | 5.x |
 | Datos | Pandas | 3.0 |
 | Túnel | Localtunnel | - |
 
@@ -101,14 +107,14 @@ graph TB
 
 ## 🔗 Dashboard
 
-El dashboard se ejecuta localmente y se expone vía túnel:
-
 ```bash
-# Iniciar dashboard
-cd "/home/kali/big data"
-streamlit run dashboard_fars_v2.py --server.port 8501
+# Iniciar dashboard interactivo (Plotly)
+python3 scripts/04_dashboard.py
 
-# Exponer públicamente
+# O directamente:
+streamlit run dashboard_fars_v4.py --server.port 8501
+
+# Exponer públicamente:
 npx localtunnel --port 8501
 ```
 
