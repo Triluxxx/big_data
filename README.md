@@ -16,18 +16,9 @@
 
 | Archivo | Descripción |
 |---------|-------------|
-| `dashboard_fars_v4.py` | Dashboard Streamlit + Plotly (gráficos interactivos) |
-| `resultados_analisis.json` | Resultados del modelo en formato JSON |
+| `resultados_analisis.json` | Resultados del modelo Spark ML en formato JSON |
 
-### 📂 Scripts Modulares (`scripts/`)
-
-| Script | Fase | Descripción |
-|--------|------|-------------|
-| `01_ingesta.py` | 1 | Diagnóstico de conectividad y estado del clúster |
-| `02_etl.py` | 2 | Transferencia de datos y carga a HDFS con particionado |
-| `03_spark_ml.py` | 3 | Análisis ML: Pearson + Random Forest Regressor |
-| `04_dashboard.py` | 4 | Iniciar dashboard Streamlit + Plotly |
-| `pipeline_completo.py` | Todas | Ejecuta fases 1-3 (o 1-4 con --all) |
+> 💡 Los scripts Python (`scripts/`) y el dashboard (`dashboard_fars_v4.py`) están disponibles localmente. El código completo se encuentra documentado dentro de [COMANDOS.md](COMANDOS.md) y [CASO_DE_ESTUDIO_FARS.md](CASO_DE_ESTUDIO_FARS.md).
 
 ### 📂 Datos
 
@@ -65,15 +56,14 @@ graph TB
 
 ---
 
-## 🚀 Flujo de Trabajo (7 Fases)
+## 🚀 Flujo de Trabajo (4 Fases)
 
-| Fase | Descripción | Script |
-|------|-------------|--------|
-| 1 | Descubrimiento y diagnóstico del clúster | `scripts/01_ingesta.py` |
-| 2 | Transferencia de datos Kali → Master → HDFS | `scripts/02_etl.py` |
-| 3 | Análisis ML con PySpark (Pearson + Random Forest) | `scripts/03_spark_ml.py` |
-| 4 | Dashboard ejecutivo con Streamlit + Plotly | `scripts/04_dashboard.py` |
-| 🚀 | **Pipeline completo (todo automático)** | `scripts/pipeline_completo.py` |
+| Fase | Descripción | Documentado en |
+|------|-------------|----------------|
+| 1 | Descubrimiento y diagnóstico del clúster | [COMANDOS.md Fase 1](COMANDOS.md) |
+| 2 | Transferencia y carga a HDFS con particionado | [COMANDOS.md Fase 2-3](COMANDOS.md) |
+| 3 | Análisis ML con PySpark (Pearson + Random Forest) | [COMANDOS.md Fase 5](COMANDOS.md) |
+| 4 | Dashboard ejecutivo con Streamlit + Plotly | [COMANDOS.md Fase 6](COMANDOS.md) |
 
 ---
 
@@ -107,15 +97,14 @@ graph TB
 
 ## 🔗 Dashboard
 
-```bash
-# Iniciar dashboard interactivo (Plotly)
-python3 scripts/04_dashboard.py
+El código del dashboard y los scripts modulares están documentados en [COMANDOS.md](COMANDOS.md).
 
-# O directamente:
+```bash
+# El dashboard se ejecuta localmente:
 streamlit run dashboard_fars_v4.py --server.port 8501
 
-# Exponer públicamente:
-npx localtunnel --port 8501
+# Pipeline completo:
+python3 scripts/pipeline_completo.py
 ```
 
 ---
