@@ -1,0 +1,800 @@
+{
+  "resumen": {
+    "total_accidentes": 66914,
+    "total_fatalidades": 72898,
+    "media_fatalidades": 1.0894,
+    "nota": "FARS solo contiene accidentes con al menos 1 fatalidad. El análisis mide qué factores aumentan el NÚMERO de fatalidades por accidente."
+  },
+  "modelo": {
+    "tipo": "RandomForestRegressor",
+    "rmse": 0.3438,
+    "r2": 0.1417,
+    "interpretacion": "El modelo explica 14.2% de la varianza en número de fatalidades"
+  },
+  "correlaciones_pearson": [
+    {
+      "variable": "total_persons",
+      "label": "Personas Involucradas",
+      "pearson_r": 0.2946,
+      "abs_r": 0.2946
+    },
+    {
+      "variable": "total_vehicles",
+      "label": "Vehículos Involucrados",
+      "pearson_r": 0.1126,
+      "abs_r": 0.1126
+    },
+    {
+      "variable": "drunk_drivers",
+      "label": "Conductores Ebrios",
+      "pearson_r": 0.0501,
+      "abs_r": 0.0501
+    },
+    {
+      "variable": "pedestrians",
+      "label": "Peatones",
+      "pearson_r": -0.0484,
+      "abs_r": 0.0484
+    },
+    {
+      "variable": "manner_of_collision",
+      "label": "Tipo de Colisión",
+      "pearson_r": 0.0381,
+      "abs_r": 0.0381
+    },
+    {
+      "variable": "rural_urban",
+      "label": "Zona Rural/Urbana",
+      "pearson_r": -0.038,
+      "abs_r": 0.038
+    },
+    {
+      "variable": "light_condition",
+      "label": "Condición de Luz",
+      "pearson_r": -0.014,
+      "abs_r": 0.014
+    },
+    {
+      "variable": "hour",
+      "label": "Hora del Día",
+      "pearson_r": -0.0131,
+      "abs_r": 0.0131
+    },
+    {
+      "variable": "national_highway_system",
+      "label": "Sistema Nacional de Autopistas",
+      "pearson_r": 0.0106,
+      "abs_r": 0.0106
+    },
+    {
+      "variable": "work_zone",
+      "label": "Zona de Trabajo",
+      "pearson_r": 0.0088,
+      "abs_r": 0.0088
+    },
+    {
+      "variable": "day_of_week",
+      "label": "Día de la Semana",
+      "pearson_r": 0.007,
+      "abs_r": 0.007
+    },
+    {
+      "variable": "school_bus",
+      "label": "Autobús Escolar",
+      "pearson_r": 0.0066,
+      "abs_r": 0.0066
+    },
+    {
+      "variable": "month",
+      "label": "Mes",
+      "pearson_r": -0.0041,
+      "abs_r": 0.0041
+    },
+    {
+      "variable": "type_of_intersection",
+      "label": "Tipo de Intersección",
+      "pearson_r": -0.0031,
+      "abs_r": 0.0031
+    }
+  ],
+  "importancia_random_forest": [
+    {
+      "variable": "total_persons",
+      "importancia": 0.405953
+    },
+    {
+      "variable": "hour",
+      "importancia": 0.10245
+    },
+    {
+      "variable": "month",
+      "importancia": 0.0726
+    },
+    {
+      "variable": "manner_of_collision",
+      "importancia": 0.06934
+    },
+    {
+      "variable": "pedestrians",
+      "importancia": 0.063109
+    },
+    {
+      "variable": "total_vehicles",
+      "importancia": 0.057626
+    },
+    {
+      "variable": "day_of_week",
+      "importancia": 0.052586
+    },
+    {
+      "variable": "rural_urban",
+      "importancia": 0.043661
+    },
+    {
+      "variable": "light_condition",
+      "importancia": 0.038451
+    },
+    {
+      "variable": "drunk_drivers",
+      "importancia": 0.029081
+    },
+    {
+      "variable": "type_of_intersection",
+      "importancia": 0.028804
+    },
+    {
+      "variable": "national_highway_system",
+      "importancia": 0.024694
+    },
+    {
+      "variable": "work_zone",
+      "importancia": 0.009047
+    },
+    {
+      "variable": "school_bus",
+      "importancia": 0.002598
+    }
+  ],
+  "top_factores": [
+    {
+      "rank": 1,
+      "variable": "total_persons",
+      "label": "Personas Involucradas",
+      "pearson_r": 0.2946,
+      "rf_importance": 0.405953
+    },
+    {
+      "rank": 2,
+      "variable": "total_vehicles",
+      "label": "Vehículos Involucrados",
+      "pearson_r": 0.1126,
+      "rf_importance": 0.057626
+    },
+    {
+      "rank": 3,
+      "variable": "drunk_drivers",
+      "label": "Conductores Ebrios",
+      "pearson_r": 0.0501,
+      "rf_importance": 0.029081
+    },
+    {
+      "rank": 4,
+      "variable": "pedestrians",
+      "label": "Peatones",
+      "pearson_r": -0.0484,
+      "rf_importance": 0.063109
+    },
+    {
+      "rank": 5,
+      "variable": "manner_of_collision",
+      "label": "Tipo de Colisión",
+      "pearson_r": 0.0381,
+      "rf_importance": 0.06934
+    },
+    {
+      "rank": 6,
+      "variable": "rural_urban",
+      "label": "Zona Rural/Urbana",
+      "pearson_r": -0.038,
+      "rf_importance": 0.043661
+    },
+    {
+      "rank": 7,
+      "variable": "light_condition",
+      "label": "Condición de Luz",
+      "pearson_r": -0.014,
+      "rf_importance": 0.038451
+    },
+    {
+      "rank": 8,
+      "variable": "hour",
+      "label": "Hora del Día",
+      "pearson_r": -0.0131,
+      "rf_importance": 0.10245
+    }
+  ],
+  "detalle_por_grupo": {
+    "drunk_drivers": [
+      {
+        "valor": 3,
+        "n": 6,
+        "media_fatalidades": 1.8333,
+        "std_fatalidades": 0.98,
+        "total_fatalidades": 11
+      },
+      {
+        "valor": 2,
+        "n": 516,
+        "media_fatalidades": 1.3101,
+        "std_fatalidades": 0.61,
+        "total_fatalidades": 676
+      },
+      {
+        "valor": 1,
+        "n": 17642,
+        "media_fatalidades": 1.1079,
+        "std_fatalidades": 0.38,
+        "total_fatalidades": 19546
+      },
+      {
+        "valor": 0,
+        "n": 48750,
+        "media_fatalidades": 1.0803,
+        "std_fatalidades": 0.35,
+        "total_fatalidades": 52665
+      }
+    ],
+    "pedestrians": [
+      {
+        "valor": 11,
+        "n": 2,
+        "media_fatalidades": 3.5,
+        "std_fatalidades": 0.71,
+        "total_fatalidades": 7
+      },
+      {
+        "valor": 9,
+        "n": 5,
+        "media_fatalidades": 2.8,
+        "std_fatalidades": 2.05,
+        "total_fatalidades": 14
+      },
+      {
+        "valor": 7,
+        "n": 4,
+        "media_fatalidades": 2.25,
+        "std_fatalidades": 1.5,
+        "total_fatalidades": 9
+      },
+      {
+        "valor": 5,
+        "n": 10,
+        "media_fatalidades": 2.2,
+        "std_fatalidades": 1.48,
+        "total_fatalidades": 22
+      },
+      {
+        "valor": 8,
+        "n": 2,
+        "media_fatalidades": 1.5,
+        "std_fatalidades": 0.71,
+        "total_fatalidades": 3
+      },
+      {
+        "valor": 4,
+        "n": 32,
+        "media_fatalidades": 1.4688,
+        "std_fatalidades": 0.76,
+        "total_fatalidades": 47
+      },
+      {
+        "valor": 3,
+        "n": 105,
+        "media_fatalidades": 1.3524,
+        "std_fatalidades": 0.6,
+        "total_fatalidades": 142
+      },
+      {
+        "valor": 6,
+        "n": 8,
+        "media_fatalidades": 1.25,
+        "std_fatalidades": 0.46,
+        "total_fatalidades": 10
+      },
+      {
+        "valor": 2,
+        "n": 623,
+        "media_fatalidades": 1.2151,
+        "std_fatalidades": 0.42,
+        "total_fatalidades": 757
+      },
+      {
+        "valor": 0,
+        "n": 53464,
+        "media_fatalidades": 1.1068,
+        "std_fatalidades": 0.4,
+        "total_fatalidades": 59175
+      },
+      {
+        "valor": 1,
+        "n": 12658,
+        "media_fatalidades": 1.0042,
+        "std_fatalidades": 0.08,
+        "total_fatalidades": 12711
+      },
+      {
+        "valor": 16,
+        "n": 1,
+        "media_fatalidades": 1.0,
+        "std_fatalidades": 0,
+        "total_fatalidades": 1
+      }
+    ],
+    "manner_of_collision": [
+      {
+        "valor": 2,
+        "n": 6814,
+        "media_fatalidades": 1.2316,
+        "std_fatalidades": 0.56,
+        "total_fatalidades": 8392
+      },
+      {
+        "valor": 11,
+        "n": 165,
+        "media_fatalidades": 1.1697,
+        "std_fatalidades": 0.63,
+        "total_fatalidades": 193
+      },
+      {
+        "valor": 98,
+        "n": 44,
+        "media_fatalidades": 1.1591,
+        "std_fatalidades": 0.57,
+        "total_fatalidades": 51
+      },
+      {
+        "valor": 99,
+        "n": 123,
+        "media_fatalidades": 1.122,
+        "std_fatalidades": 0.33,
+        "total_fatalidades": 138
+      },
+      {
+        "valor": 6,
+        "n": 11964,
+        "media_fatalidades": 1.1163,
+        "std_fatalidades": 0.4,
+        "total_fatalidades": 13355
+      },
+      {
+        "valor": 8,
+        "n": 750,
+        "media_fatalidades": 1.116,
+        "std_fatalidades": 0.4,
+        "total_fatalidades": 837
+      },
+      {
+        "valor": 1,
+        "n": 4575,
+        "media_fatalidades": 1.1091,
+        "std_fatalidades": 0.44,
+        "total_fatalidades": 5074
+      },
+      {
+        "valor": 7,
+        "n": 1035,
+        "media_fatalidades": 1.1043,
+        "std_fatalidades": 0.42,
+        "total_fatalidades": 1143
+      },
+      {
+        "valor": 9,
+        "n": 71,
+        "media_fatalidades": 1.0704,
+        "std_fatalidades": 0.26,
+        "total_fatalidades": 76
+      },
+      {
+        "valor": 0,
+        "n": 41370,
+        "media_fatalidades": 1.0548,
+        "std_fatalidades": 0.28,
+        "total_fatalidades": 43636
+      },
+      {
+        "valor": 10,
+        "n": 3,
+        "media_fatalidades": 1.0,
+        "std_fatalidades": 0,
+        "total_fatalidades": 3
+      }
+    ],
+    "rural_urban": [
+      {
+        "valor": 1,
+        "n": 31755,
+        "media_fatalidades": 1.1159,
+        "std_fatalidades": 0.42,
+        "total_fatalidades": 35435
+      },
+      {
+        "valor": 9,
+        "n": 38,
+        "media_fatalidades": 1.0789,
+        "std_fatalidades": 0.36,
+        "total_fatalidades": 41
+      },
+      {
+        "valor": 2,
+        "n": 32580,
+        "media_fatalidades": 1.0657,
+        "std_fatalidades": 0.31,
+        "total_fatalidades": 34719
+      },
+      {
+        "valor": 8,
+        "n": 2322,
+        "media_fatalidades": 1.065,
+        "std_fatalidades": 0.29,
+        "total_fatalidades": 2473
+      },
+      {
+        "valor": 6,
+        "n": 219,
+        "media_fatalidades": 1.0502,
+        "std_fatalidades": 0.24,
+        "total_fatalidades": 230
+      }
+    ],
+    "light_condition": [
+      {
+        "valor": 2,
+        "n": 18664,
+        "media_fatalidades": 1.1003,
+        "std_fatalidades": 0.4,
+        "total_fatalidades": 20536
+      },
+      {
+        "valor": 5,
+        "n": 1603,
+        "media_fatalidades": 1.0936,
+        "std_fatalidades": 0.36,
+        "total_fatalidades": 1753
+      },
+      {
+        "valor": 1,
+        "n": 31766,
+        "media_fatalidades": 1.0908,
+        "std_fatalidades": 0.36,
+        "total_fatalidades": 34651
+      },
+      {
+        "valor": 4,
+        "n": 1254,
+        "media_fatalidades": 1.0853,
+        "std_fatalidades": 0.35,
+        "total_fatalidades": 1361
+      },
+      {
+        "valor": 7,
+        "n": 26,
+        "media_fatalidades": 1.0769,
+        "std_fatalidades": 0.27,
+        "total_fatalidades": 28
+      },
+      {
+        "valor": 3,
+        "n": 12829,
+        "media_fatalidades": 1.0719,
+        "std_fatalidades": 0.32,
+        "total_fatalidades": 13752
+      },
+      {
+        "valor": 6,
+        "n": 442,
+        "media_fatalidades": 1.0588,
+        "std_fatalidades": 0.29,
+        "total_fatalidades": 468
+      },
+      {
+        "valor": 9,
+        "n": 291,
+        "media_fatalidades": 1.0584,
+        "std_fatalidades": 0.25,
+        "total_fatalidades": 308
+      },
+      {
+        "valor": 8,
+        "n": 39,
+        "media_fatalidades": 1.0513,
+        "std_fatalidades": 0.22,
+        "total_fatalidades": 41
+      }
+    ],
+    "national_highway_system": [
+      {
+        "valor": 1,
+        "n": 24694,
+        "media_fatalidades": 1.1133,
+        "std_fatalidades": 0.43,
+        "total_fatalidades": 27491
+      },
+      {
+        "valor": 0,
+        "n": 40816,
+        "media_fatalidades": 1.0757,
+        "std_fatalidades": 0.32,
+        "total_fatalidades": 43905
+      },
+      {
+        "valor": 9,
+        "n": 1404,
+        "media_fatalidades": 1.0698,
+        "std_fatalidades": 0.31,
+        "total_fatalidades": 1502
+      }
+    ],
+    "work_zone": [
+      {
+        "valor": 3,
+        "n": 23,
+        "media_fatalidades": 1.6522,
+        "std_fatalidades": 2.52,
+        "total_fatalidades": 38
+      },
+      {
+        "valor": 1,
+        "n": 894,
+        "media_fatalidades": 1.1085,
+        "std_fatalidades": 0.39,
+        "total_fatalidades": 991
+      },
+      {
+        "valor": 2,
+        "n": 114,
+        "media_fatalidades": 1.1053,
+        "std_fatalidades": 0.45,
+        "total_fatalidades": 126
+      },
+      {
+        "valor": 4,
+        "n": 298,
+        "media_fatalidades": 1.094,
+        "std_fatalidades": 0.45,
+        "total_fatalidades": 326
+      },
+      {
+        "valor": 0,
+        "n": 65585,
+        "media_fatalidades": 1.0889,
+        "std_fatalidades": 0.36,
+        "total_fatalidades": 71417
+      }
+    ],
+    "day_of_week": [
+      {
+        "valor": 7,
+        "n": 11756,
+        "media_fatalidades": 1.1102,
+        "std_fatalidades": 0.4,
+        "total_fatalidades": 13052
+      },
+      {
+        "valor": 1,
+        "n": 10590,
+        "media_fatalidades": 1.1013,
+        "std_fatalidades": 0.4,
+        "total_fatalidades": 11663
+      },
+      {
+        "valor": 6,
+        "n": 10254,
+        "media_fatalidades": 1.0856,
+        "std_fatalidades": 0.34,
+        "total_fatalidades": 11132
+      },
+      {
+        "valor": 2,
+        "n": 8528,
+        "media_fatalidades": 1.0847,
+        "std_fatalidades": 0.34,
+        "total_fatalidades": 9250
+      },
+      {
+        "valor": 5,
+        "n": 9112,
+        "media_fatalidades": 1.0789,
+        "std_fatalidades": 0.34,
+        "total_fatalidades": 9831
+      },
+      {
+        "valor": 3,
+        "n": 8107,
+        "media_fatalidades": 1.078,
+        "std_fatalidades": 0.34,
+        "total_fatalidades": 8739
+      },
+      {
+        "valor": 4,
+        "n": 8567,
+        "media_fatalidades": 1.0775,
+        "std_fatalidades": 0.35,
+        "total_fatalidades": 9231
+      }
+    ],
+    "school_bus": [
+      {
+        "valor": 1,
+        "n": 212,
+        "media_fatalidades": 1.1321,
+        "std_fatalidades": 0.56,
+        "total_fatalidades": 240
+      },
+      {
+        "valor": 0,
+        "n": 66702,
+        "media_fatalidades": 1.0893,
+        "std_fatalidades": 0.36,
+        "total_fatalidades": 72658
+      }
+    ],
+    "month": [
+      {
+        "valor": 2,
+        "n": 4394,
+        "media_fatalidades": 1.0967,
+        "std_fatalidades": 0.36,
+        "total_fatalidades": 4819
+      },
+      {
+        "valor": 6,
+        "n": 5790,
+        "media_fatalidades": 1.095,
+        "std_fatalidades": 0.38,
+        "total_fatalidades": 6340
+      },
+      {
+        "valor": 7,
+        "n": 6023,
+        "media_fatalidades": 1.0925,
+        "std_fatalidades": 0.36,
+        "total_fatalidades": 6580
+      },
+      {
+        "valor": 3,
+        "n": 5079,
+        "media_fatalidades": 1.0923,
+        "std_fatalidades": 0.38,
+        "total_fatalidades": 5548
+      },
+      {
+        "valor": 12,
+        "n": 5671,
+        "media_fatalidades": 1.0922,
+        "std_fatalidades": 0.36,
+        "total_fatalidades": 6194
+      },
+      {
+        "valor": 5,
+        "n": 5852,
+        "media_fatalidades": 1.0919,
+        "std_fatalidades": 0.38,
+        "total_fatalidades": 6390
+      },
+      {
+        "valor": 8,
+        "n": 6150,
+        "media_fatalidades": 1.0896,
+        "std_fatalidades": 0.35,
+        "total_fatalidades": 6701
+      },
+      {
+        "valor": 4,
+        "n": 5143,
+        "media_fatalidades": 1.0885,
+        "std_fatalidades": 0.36,
+        "total_fatalidades": 5598
+      },
+      {
+        "valor": 10,
+        "n": 6306,
+        "media_fatalidades": 1.0858,
+        "std_fatalidades": 0.38,
+        "total_fatalidades": 6847
+      },
+      {
+        "valor": 11,
+        "n": 5765,
+        "media_fatalidades": 1.0848,
+        "std_fatalidades": 0.35,
+        "total_fatalidades": 6254
+      },
+      {
+        "valor": 1,
+        "n": 4722,
+        "media_fatalidades": 1.0847,
+        "std_fatalidades": 0.37,
+        "total_fatalidades": 5122
+      },
+      {
+        "valor": 9,
+        "n": 6019,
+        "media_fatalidades": 1.0807,
+        "std_fatalidades": 0.33,
+        "total_fatalidades": 6505
+      }
+    ],
+    "type_of_intersection": [
+      {
+        "valor": 99,
+        "n": 113,
+        "media_fatalidades": 1.1062,
+        "std_fatalidades": 0.39,
+        "total_fatalidades": 125
+      },
+      {
+        "valor": 5,
+        "n": 10,
+        "media_fatalidades": 1.1,
+        "std_fatalidades": 0.32,
+        "total_fatalidades": 11
+      },
+      {
+        "valor": 1,
+        "n": 50480,
+        "media_fatalidades": 1.0931,
+        "std_fatalidades": 0.37,
+        "total_fatalidades": 55180
+      },
+      {
+        "valor": 4,
+        "n": 424,
+        "media_fatalidades": 1.0849,
+        "std_fatalidades": 0.33,
+        "total_fatalidades": 460
+      },
+      {
+        "valor": 2,
+        "n": 10109,
+        "media_fatalidades": 1.0839,
+        "std_fatalidades": 0.33,
+        "total_fatalidades": 10957
+      },
+      {
+        "valor": 3,
+        "n": 5606,
+        "media_fatalidades": 1.0676,
+        "std_fatalidades": 0.31,
+        "total_fatalidades": 5985
+      },
+      {
+        "valor": 7,
+        "n": 68,
+        "media_fatalidades": 1.0588,
+        "std_fatalidades": 0.24,
+        "total_fatalidades": 72
+      },
+      {
+        "valor": 10,
+        "n": 42,
+        "media_fatalidades": 1.0476,
+        "std_fatalidades": 0.22,
+        "total_fatalidades": 44
+      },
+      {
+        "valor": 6,
+        "n": 29,
+        "media_fatalidades": 1.0345,
+        "std_fatalidades": 0.19,
+        "total_fatalidades": 30
+      },
+      {
+        "valor": 98,
+        "n": 33,
+        "media_fatalidades": 1.0303,
+        "std_fatalidades": 0.17,
+        "total_fatalidades": 34
+      }
+    ]
+  }
+}
